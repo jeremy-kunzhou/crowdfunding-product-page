@@ -80,10 +80,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
         element.querySelector(".operation").style.display = "grid";
         element.querySelector(".select-pledge-radio").checked = true;
         element.querySelector(".operation input").value = "0";
+        element.classList.add("selected");
       } else {
         element.querySelector(".operation").style.display = "none";
         element.querySelector(".select-pledge-radio").checked = false;
         element.querySelector(".operation input").value = "";
+        element.classList.remove("selected");
       }
     });
   };

@@ -100,7 +100,7 @@ header {
   left: 0;
 }
 
-menu {
+.menu {
   position: absolute;
   height: 100px;
   width: 100%;
@@ -110,45 +110,45 @@ menu {
   padding-left: 160px;
   padding-right: 160px;
 }
-menu .nav-toggle-label {
+.menu .nav-toggle-label {
   display: none;
   z-index: 200;
 }
-menu #nav-toggle {
+.menu #nav-toggle {
   display: none;
 }
-menu .nav-toggle-label {
+.menu .nav-toggle-label {
   width: 16px;
   height: 15px;
   background: url("../images/icon-hamburger.svg");
 }
-menu .logo {
+.menu .logo {
   grid-column: 1/2;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 200;
 }
-menu nav {
+.menu nav {
   grid-column: 2/3;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-menu nav ul {
+.menu nav ul {
   list-style: none;
   display: flex;
   justify-content: space-around;
 }
-menu nav ul li {
+.menu nav ul li {
   margin: 0 1.5vw;
 }
-menu nav ul li a {
+.menu nav ul li a {
   color: white;
   font-size: 13.28px;
   position: relative;
 }
-menu nav ul li a:hover::after {
+.menu nav ul li a:hover::after {
   content: "";
   position: absolute;
   height: 1px;
@@ -220,18 +220,19 @@ main .result ul {
   justify-content: center;
   align-items: center;
 }
-main .result ul div {
+main .result ul li {
   display: grid;
 }
-main .result ul div:nth-child(2) {
+main .result ul li:nth-child(2) {
   border: 1px solid rgba(112, 112, 112, 0.1);
   border-width: 0px 1px;
 }
-main .result ul div li {
-  justify-self: center;
+main .result ul li h1 {
+  text-align: center;
 }
-main .result ul div li p {
+main .result ul li p {
   color: #7a7a7a;
+  text-align: center;
 }
 main .result .progress {
   margin-top: 40px;
@@ -284,8 +285,10 @@ main .back-information .backlist-section ul .backitem .backitem-info .backitem-h
   display: grid;
   grid-template-columns: auto 1fr auto;
 }
-main .back-information .backlist-section ul .backitem .backitem-info .backitem-header h3 {
+main .back-information .backlist-section ul .backitem .backitem-info .backitem-header span {
   grid-column: 1/2;
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 main .back-information .backlist-section ul .backitem .backitem-info .backitem-header p {
   grid-column: 3/4;
@@ -338,9 +341,13 @@ main .back-information .backlist-section ul .backitem.invalid .backitem-info .ba
 
 .container {
   border-radius: 10px;
-  border: 1px solid rgba(112, 112, 112, 0.05);
+  border: 1px solid #d9d9d9;
   background: white;
   padding-bottom: 47px;
+}
+.container.selected {
+  border-color: #147b74;
+  border-width: 2px;
 }
 
 #bookmark {
@@ -450,9 +457,13 @@ main .back-information .backlist-section ul .backitem.invalid .backitem-info .ba
 .select-pledge .select-pledge-item {
   padding: 35px 0 0px;
 }
+.select-pledge .select-pledge-item:not(:first-child) {
+  margin-top: 25px;
+}
 .select-pledge .select-pledge-item .select-pledge-item-header {
   padding-left: 25px;
   padding-right: 25px;
+  margin-bottom: 33px;
 }
 .select-pledge .select-pledge-item label {
   display: grid;
@@ -467,14 +478,20 @@ main .back-information .backlist-section ul .backitem.invalid .backitem-info .ba
   margin-top: 4px;
 }
 .select-pledge .select-pledge-item label .title-name {
+  font-size: 1rem;
+  font-weight: 700;
   grid-column: 2/3;
   grid-row: 1/2;
   margin-right: 16px;
+}
+.select-pledge .select-pledge-item label .title-name:hover {
+  color: #147b74;
 }
 .select-pledge .select-pledge-item label .amount {
   grid-column: 3/4;
   grid-row: 1/2;
   color: #3cb4ac;
+  font-weight: 700;
 }
 .select-pledge .select-pledge-item label .number {
   grid-column: 5/6;
@@ -491,10 +508,13 @@ main .back-information .backlist-section ul .backitem.invalid .backitem-info .ba
   margin-top: 25px;
   grid-column: 2/6;
   grid-row: 2/3;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #7a7a7a;
 }
 .select-pledge .select-pledge-item .operation {
   padding: 25px 25px 35px;
-  border: 1px solid rgba(112, 112, 112, 0.05);
+  border: 1px solid #d9d9d9;
   display: grid;
   grid-template-columns: 1fr auto auto;
   align-items: center;
@@ -517,6 +537,10 @@ main .back-information .backlist-section ul .backitem.invalid .backitem-info .ba
   border: 1px solid #7a7a7a;
   padding-left: 40px;
   font-weight: 700;
+}
+.select-pledge .select-pledge-item .operation .input-box input[type=text]:focus {
+  border-color: #147b74;
+  outline: none;
 }
 .select-pledge .select-pledge-item .operation .input-box span {
   position: absolute;
@@ -625,25 +649,25 @@ main .back-information .backlist-section ul .backitem.invalid .backitem-info .ba
 }
 
 @media screen and (max-width: 800px) {
-  menu {
+  .menu {
     padding-left: 0px;
     padding-right: 0px;
   }
-  menu .nav-toggle-label {
+  .menu .nav-toggle-label {
     display: block;
     grid-column: 2/3;
     justify-self: flex-end;
     align-self: center;
     margin-right: 20px;
   }
-  menu #nav-toggle:checked ~ nav {
+  .menu #nav-toggle:checked ~ nav {
     display: block;
   }
-  menu #nav-toggle:checked ~ label {
+  .menu #nav-toggle:checked ~ label {
     width: 15px;
     background: url("../images/icon-close-menu.svg");
   }
-  menu nav {
+  .menu nav {
     display: none;
     grid-column: unset !important;
     position: absolute;
@@ -654,7 +678,7 @@ main .back-information .backlist-section ul .backitem.invalid .backitem-info .ba
     background: rgba(0, 0, 0, 0.5);
     z-index: 1;
   }
-  menu nav ul {
+  .menu nav ul {
     position: absolute;
     top: 88px;
     right: calc(20px);
@@ -664,7 +688,7 @@ main .back-information .backlist-section ul .backitem.invalid .backitem-info .ba
     z-index: 999;
     flex-direction: column;
   }
-  menu nav ul li {
+  .menu nav ul li {
     margin: 0;
     display: grid;
     align-items: center;
@@ -672,12 +696,12 @@ main .back-information .backlist-section ul .backitem.invalid .backitem-info .ba
     height: 88px;
     padding: 23px;
   }
-  menu nav ul li:not(:nth-child(1)) {
+  .menu nav ul li:not(:nth-child(1)) {
     border-width: 1px 0 0 0;
     border-style: solid;
     border-color: #ececec;
   }
-  menu nav ul li a {
+  .menu nav ul li a {
     color: black;
     font-size: 1rem;
     font-weight: 500;
@@ -716,12 +740,12 @@ main .back-information .backlist-section ul .backitem.invalid .backitem-info .ba
     display: flex;
     flex-direction: column;
   }
-  main .result ul div:nth-child(2) {
+  main .result ul li:nth-child(2) {
     border: 1px solid rgba(112, 112, 112, 0.1);
     border-width: 1px 0px;
     margin: 25px 0px;
   }
-  main .result ul div li h1 {
+  main .result ul li h1 {
     text-align: center;
   }
   main .back-information .backlist-section ul .backitem .backitem-info .backitem-header {
@@ -774,6 +798,9 @@ main .back-information .backlist-section ul .backitem.invalid .backitem-info .ba
     margin-bottom: 25px;
     font-size: 0.83rem;
   }
+  .select-pledge .select-pledge-item .select-pledge-item-header {
+    margin-bottom: 30px;
+  }
   .select-pledge .select-pledge-item label {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -800,6 +827,7 @@ main .back-information .backlist-section ul .backitem.invalid .backitem-info .ba
   .select-pledge .select-pledge-item label .description {
     grid-column: 1/3;
     grid-row: 3/4;
+    margin-bottom: 30px;
   }
   .select-pledge .select-pledge-item .operation {
     grid-template-columns: 1fr 1fr;

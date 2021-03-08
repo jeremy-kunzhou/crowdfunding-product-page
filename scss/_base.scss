@@ -44,7 +44,8 @@ header {
   top: 0;
   left: 0;
 }
-menu {
+
+.menu {
   position: absolute;
   height: 100px;
   width: 100%;
@@ -192,20 +193,23 @@ main {
       justify-content: center;
       align-items: center;
 
-      div {
+      li {
         display: grid;
+
         &:nth-child(2) {
           border: 1px solid rgba(112, 112, 112, 0.1);
           border-width: 0px 1px;
         }
 
-        li {
-          justify-self: center;
-
+      
+        h1 {
+          text-align: center;
+        }
           p {
             color: $--clr-neutral-dark-gray;
+            text-align: center;
           }
-        }
+        
       }
     }
 
@@ -272,8 +276,10 @@ main {
               display: grid;
               grid-template-columns: auto 1fr auto;
 
-              h3 {
+              span {
                 grid-column: 1/2;
+                font-size: 1.2rem;
+                font-weight: $--fw-700;
               }
 
               p {
@@ -345,9 +351,14 @@ main {
 
 .container {
   border-radius: 10px;
-  border: 1px solid rgba(112, 112, 112, 0.05);
+  border: 1px solid #d9d9d9;
   background: white;
   padding-bottom: 47px;
+
+  &.selected {
+    border-color: $--clr-primary-dark-cyan;
+    border-width: 2px;
+  }
 }
 
 #bookmark {
@@ -471,10 +482,14 @@ main {
 
   .select-pledge-item {
     padding: 35px 0 0px;
+    &:not(:first-child) {
+      margin-top: 25px;
+    }
 
     .select-pledge-item-header {
       padding-left: 25px;
       padding-right: 25px;
+      margin-bottom: 33px;
     }
 
     label {
@@ -491,16 +506,23 @@ main {
       }
 
       .title-name {
+        font-size: 1rem;
+        font-weight: $--fw-700;
         grid-column: 2/3;
         grid-row: 1/2;
         // margin-bottom: 30px;
         margin-right: 16px;
+
+        &:hover {
+          color: $--clr-primary-dark-cyan;
+        }
       }
 
       .amount {
         grid-column: 3/4;
         grid-row: 1/2;
         color: $--clr-primary-moderate-cyan;
+        font-weight: $--fw-700;
       }
 
       .number {
@@ -519,12 +541,15 @@ main {
         margin-top: 25px;
         grid-column: 2/6;
         grid-row: 2/3;
+        font-weight: $--fw-400;
+        font-size: .9rem;
+        color: $--clr-neutral-dark-gray;
       }
     }
 
     .operation {
       padding: 25px 25px 35px;
-      border: 1px solid rgba(112, 112, 112, 0.05);
+      border: 1px solid #d9d9d9;
 
       display: grid;
       grid-template-columns: 1fr auto auto;
@@ -551,6 +576,11 @@ main {
 
           padding-left: 40px;
           font-weight: $--fw-700;
+
+          &:focus {
+            border-color: $--clr-primary-dark-cyan;
+            outline: none;
+          }
         }
 
         span {
